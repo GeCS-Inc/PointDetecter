@@ -22,9 +22,10 @@ class BoltPointDataset(Dataset):
         self.data = glob.glob(os.path.join(dataset_dir, f"*{img_suffix}"))
 
         self.resize = 100
-        self.transforms = transforms.Compose([transforms.RandomResizedCrop(self.resize, scale=(1.0, 1.0), ratio=(1.0, 1.0)), 
-                                            transforms.ToTensor(), 
-                                            transforms.Normalize((0.485, 0.456, 0.406, 0.5), (0.229, 0.224, 0.225, 0.5)), 
+        self.transforms = transforms.Compose([
+            transforms.RandomResizedCrop(self.resize, scale=(1.0, 1.0), ratio=(1.0, 1.0)), 
+            transforms.ToTensor(), 
+            transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)), 
         ])
 
     def __len__(self):
@@ -34,7 +35,7 @@ class BoltPointDataset(Dataset):
 
         # Image
         img_path = self.data[index]
-        img = Image.open(img_path)
+        img = Image.open(img_path).convert("RGB")
         img = self.transforms(img)
 
         # Ground Truth
