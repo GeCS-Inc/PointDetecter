@@ -127,8 +127,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-<<<<<<< HEAD
 dummy_test/
 lightning_logs/
-=======
->>>>>>> 2fe54447c5d8901e6fd59b58a5a2141e8483d1ff
